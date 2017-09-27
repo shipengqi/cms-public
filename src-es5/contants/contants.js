@@ -1,0 +1,38 @@
+/**
+ * Created by shipengqi on 17-1-9.
+ */
+
+
+
+module.exports = Object.freeze({
+    //OSS 常量
+    OSS_BUCKET : 'bdtt-api',
+    OSS_ORIGIN_NAME : 'http://img.benditoutiao.com/',
+    //违禁词审核相关常量
+    PROHIBITED_SOURCE_NICK : 1,
+    PROHIBITED_SOURCE_SIGNATURE : 2,
+    PROHIBITED_SOURCE_OGCARTICLE : 3,
+    PROHIBITED_SOURCE_UGCCOMMENT : 4,
+    PROHIBITED_SOURCE_CRAWLER : 5,
+    ARTIFICIAL_AUDIT_WAIT : 0,
+    ARTIFICIAL_AUDIT_PASS : 1,
+    ARTIFICIAL_AUDIT_REFUSE : 2,
+    MACHINE_AUDIT_PASS : 1,
+    MACHINE_AUDIT_REFUSE : 0,
+    TO_ARTIFICIAL_AUDIT : 1,
+    NO_ARTIFICIAL_AUDIT : 0,
+
+    //违禁词库常量
+    PROHIBITED_LEXICON_NICK : 1,
+    PROHIBITED_LEXICON_UGC : 2,
+    PROHIBITED_LEXICON_CRAWLER : 3,
+
+    //result 状态常量
+    RESPONSE_AUDIT_REFUSE : 0,
+    RESPONSE_AUDIT_PASS : 1,
+    RESPONSE_AUDIT_REFUSE_HIGHEST : 2,
+
+    //localhost
+    LOCALHOST_DEFAULT_IP:'0.0.0.0:',
+    DEFAULT_PORT:50051
+});
