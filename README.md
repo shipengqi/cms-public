@@ -4,6 +4,7 @@
 
 benditoutiao cms public module：
 
+[![NPM](https://nodei.co/npm/cms-public.png?downloads=true)](https://nodei.co/npm/cms-public/)
 
 
 ## Installation
