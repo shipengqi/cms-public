@@ -28,7 +28,7 @@ MongoServices.connectMongodb(MongoServiceParas);
 ```
 
 **Arguments**
-- MongoServiceParas      **Array**
+- MongoServiceParas: **Array**
 
 #### 使用
 
@@ -48,7 +48,7 @@ RedisServices.connectRedis(redisServiceParas);
 
 **Arguments**
 
-- redisServiceParas      **Array**
+- redisServiceParas: **Array**
 
 #### 使用
 ``` javascript
@@ -82,7 +82,7 @@ SequelizeServices.initSequelize(sequelizeServiceParas);
 
 **Arguments**
 
-- sequelizeServiceParas      **Array**
+- sequelizeServiceParas: **Array**
 
 #### 定义model
 
@@ -129,7 +129,7 @@ OssService.initOSSClient(ossServerPara);
 
 **Arguments**
 
-- ossServerPara      **Object**
+- ossServerPara: **Object**
 
 ### GrpcService
 
@@ -146,10 +146,10 @@ GrpcService.initServiceApi({
 
 **Arguments**
 
-- PROTO_PATH     proto文件路径
-- port           rpc服务端口
-- serviceName    proto 定义的服务名
-- interface      rpc 服务的接口
+- PROTO_PATH: proto文件路径
+- port: rpc服务端口
+- serviceName: proto 定义的服务名
+- interface: rpc 服务的接口
 #### 调用方法
 
 ``` javascript
@@ -169,8 +169,8 @@ KafkaService.createConsumer({address:'localhost:2181',topics:[{
 
 **Arguments**
 
-- address    kafka服务ip , port
-- topics     **Array**  消费者订阅 topic partition
+- address: kafka服务ip , port
+- topics: **Array**  消费者订阅 topic partition
 
 #### 创建生产者
 
