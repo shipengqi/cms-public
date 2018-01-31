@@ -9,12 +9,7 @@ benditoutiao cms public module：
 
 ## Installation
 
-
-
 >npm install cms-public
-
-
-
 
 ## Usage
 
@@ -26,31 +21,37 @@ benditoutiao cms public module：
 
 ### MongoServices
 
-####连接mongodb
+#### 连接mongodb
 
-    MongoServices.connectMongodb(MongoServiceParas);
-Arguments
+``` javascript
+MongoServices.connectMongodb(MongoServiceParas);
+```
+
+**Arguments**
 MongoServiceParas      **Array**
 
-####使用
+#### 使用
 
-```
+``` javascript
 const hd = MongoServices.mongoHds[instanceName];
 let news = hd.model(collectionName, NewsSchema)；
 ```
 
-###RedisServices:
+### RedisServices:
 
 
-####连接redis
+#### 连接redis
 
-    RedisServices.connectRedis(redisServiceParas);
+``` javascript
+RedisServices.connectRedis(redisServiceParas);
+```
 
-Arguments
+**Arguments**
 
 redisServiceParas      **Array**
-####使用
-```
+
+#### 使用
+``` javascript
 const redisClient = RedisServices.redisHds[instanceName];
 redisClient.set(redisKey,JSON.stringify(cacheData));
 redisClient.set(redisKey,JSON.stringify(cacheData),'EX',expire);
@@ -73,19 +74,19 @@ redisClient.del(redisKey,function(err){
 
 ### SequelizeServices
 
-####连接Mysql
+#### 连接Mysql
 
-```
+``` javascript
 SequelizeServices.initSequelize(sequelizeServiceParas);
 ```
 
-Arguments
+**Arguments**
 
 sequelizeServiceParas      **Array**
 
-####定义model
+#### 定义model
 
-```
+``` javascript
 const db = SequelizeServices.sequelizeHds.source;
 const Bbs = db.defineModel('bbs','bbs_subscribe_nexus', {
     bbs_id:db.BIGINT(20),
@@ -97,7 +98,7 @@ const Bbs = db.defineModel('bbs','bbs_subscribe_nexus', {
 ```
 或
 
-```
+``` javascript
 const Bbs = db.define('bbs_subscribe_nexus', {
     bbs_id:db.BIGINT(20),
     site_id:{
@@ -106,9 +107,9 @@ const Bbs = db.define('bbs_subscribe_nexus', {
     }
 });
 ```
-####使用model
+#### 使用model
 
-```
+``` javascript
 Bbs.localNewsSortModel.findAll({
         where:{
             news_id:id,
@@ -120,75 +121,90 @@ Bbs.localNewsSortModel.findAll({
 ### OssService
 
 
-连接OSS
+**连接OSS**
 
-    OssService.initOSSClient(ossServerPara);
+``` javascript
+OssService.initOSSClient(ossServerPara);
+```
 
-Arguments
+**Arguments**
 
 ossServerPara      **Object**
 
 ### GrpcService
 
-####连接 Grpc Server
+#### 连接 Grpc Server
 
-    GrpcService.initServiceApi({
-        PROTO_PATH:PROTO_PATH,
-        port:argument.rpcPort,
-        serviceName:'getNews',
-        interface:require('./proto/newsGrpcInterface')
-    });
-Arguments
+``` javascript
+GrpcService.initServiceApi({
+    PROTO_PATH:PROTO_PATH,
+    port:argument.rpcPort,
+    serviceName:'getNews',
+    interface:require('./proto/newsGrpcInterface')
+});
+```
+
+**Arguments**
 
 PROTO_PATH      &emsp;&emsp;proto文件路径
 port                  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;rpc服务端口
 serviceName      &emsp;&emsp;proto 定义的服务名
- interface                 &emsp;&emsp;&emsp;&emsp;rpc 服务的接口
-####调用方法
-    GrpcService.client['getNews'].getAllShowType()
+interface                 &emsp;&emsp;&emsp;&emsp;rpc 服务的接口
+#### 调用方法
+
+``` javascript
+GrpcService.client['getNews'].getAllShowType()
+```
+
 ### KafkaService
 
-####创建kafka消费者
+#### 创建kafka消费者
 
-    KafkaService.createConsumer({address:'localhost:2181',topics:[{
+``` javascript
+KafkaService.createConsumer({address:'localhost:2181',topics:[{
     topic: 'cms',
     partition:0
-    }]},callback);
+}]},callback);
+```
 
-Arguments
+**Arguments**
 
 address     &emsp;&emsp;kafka服务ip , port
 topics        &emsp;&emsp;&emsp;**Array**  消费者订阅 topic partition
 
-####创建生产者
+#### 创建生产者
 
-    KafkaService.createProducer({address:'127.0.0.1:2181'});
-
-####发布消息
-
-    KafkaService.sendMsg([{
-        topic: 'cms',
-        messages: JSON.stringify({operation:'onlineStatusSync',data:{
-            online_news_id:74277294,
-            status:0
-        }})
-    }], function(err, result) {
-        console.log(err || result);
-    });
-    
-###LoadBalancer
-
-####Grpc负载均衡
-
-     RpcLoadBalancer.init([{
-        ip:'0.0.0.0:50051',
-        PROTO_PATH:PROTO_PATH,
-        serviceName:'getNews'
-    }]);
-    
-####调用方法
-
+``` javascript
+KafkaService.createProducer({address:'127.0.0.1:2181'});
 ```
+
+#### 发布消息
+
+``` javascript
+KafkaService.sendMsg([{
+    topic: 'cms',
+    messages: JSON.stringify({operation:'onlineStatusSync',data:{
+        online_news_id:74277294,
+        status:0
+    }})
+}], function(err, result) {
+    console.log(err || result);
+});
+```   
+
+### LoadBalancer
+
+#### Grpc负载均衡
+``` javascript
+ RpcLoadBalancer.init([{
+    ip:'0.0.0.0:50051',
+    PROTO_PATH:PROTO_PATH,
+    serviceName:'getNews'
+}]);
+```    
+#### 调用方法
+
+``` javascript
 RpcLoadBalancer.selectChannel('getNews').getOnlineData()
 ```
 
