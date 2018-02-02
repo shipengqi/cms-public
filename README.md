@@ -2,8 +2,9 @@
 
 
 
-benditoutiao cms public module：
+benditoutiao cms public module
 
+[![NPM](https://nodei.co/npm-dl/cms-public.png)](https://nodei.co/npm/cms-public/)
 [![NPM](https://nodei.co/npm/cms-public.png?downloads=true)](https://nodei.co/npm/cms-public/)
 
 
